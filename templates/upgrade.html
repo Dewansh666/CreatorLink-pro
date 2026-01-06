@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upgrade to Pro</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body style="text-align:center; padding-top:60px; font-family:Arial;">
+
+<h2>Upgrade to Pro 💎</h2>
+<p>₹99 / month (TEST MODE)</p>
+
+<button id="pay">Pay ₹99</button>
+
+<script>
+var options = {
+  key: "{{ key_id }}",
+  amount: "{{ order.amount }}",
+  currency: "INR",
+  name: "CreatorLink Pro",
+  description: "Pro Plan (Test)",
+  order_id: "{{ order.id }}",
+  handler: function (response) {
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/payment-success";
+
+    for (let k in response) {
+      const i = document.createElement("input");
+      i.type = "hidden";
+      i.name = k;
+      i.value = response[k];
+      form.appendChild(i);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+  }
+};
+
+var rzp = new Razorpay(options);
+document.getElementById("pay").onclick = function(e){
+  rzp.open();
+  e.preventDefault();
+}
+</script>
+
+</body>
+</html>

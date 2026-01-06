@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up | CreatorLink Pro</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="profile-page">
+
+<div class="profile-container">
+  <h2>Create Account</h2>
+
+  <form method="POST">
+    <input name="name" placeholder="Your name" required>
+    <input name="username" placeholder="Username" required>
+    <input name="password" type="password" placeholder="Password" required>
+    <button class="btn big">Sign Up</button>
+  </form>
+
+  <p class="footer-text">
+    Already have an account? <a href="/login">Login</a>
+  </p>
+</div>
+
+</body>
+</html>

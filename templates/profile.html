@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ user.name }} | CreatorLink Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="profile-page {{ user.theme }}">
+
+  <div class="profile-card">
+
+    <img src="{{ url_for('static', filename=user.avatar) }}" class="avatar">
+
+    <h2 class="username">{{ user.name }}</h2>
+    <p class="handle">@{{ user.username }}</p>
+
+    <p class="bio">{{ user.bio }}</p>
+
+    <div class="links">
+      {% for link in links %}
+        <a href="/go/{{ link.id }}" class="link-btn">
+          {{ link.title }}
+        </a>
+      {% endfor %}
+    </div>
+
+    <p class="branding">
+      Made with <b>CreatorLink Pro</b>
+    </p>
+
+  </div>
+
+</body>
+</html>
